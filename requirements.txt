@@ -1,0 +1,26 @@
+# --- Core Data Science ---
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+
+# --- AI & Deep Learning (The Brains) ---
+tensorflow>=2.15.0       # For LSTM Prediction
+torch>=2.1.0             # For FinBERT News Analysis
+transformers>=4.35.0     # Hugging Face Models
+
+# --- Data Fetching ---
+yfinance>=0.2.33         # Yahoo Finance API
+newsapi-python>=0.2.7    # For News Sentiment
+beautifulsoup4>=4.12.0   # For Web Scraping
+requests>=2.31.0
+
+# --- The QARC Dashboard (UI) ---
+streamlit>=1.30.0        # The App Framework
+streamlit-lottie>=0.0.5  # For Robot Animations
+streamlit-extras>=0.3.6  # For the Glassmorphism Cards
+plotly>=5.18.0           # For Interactive Charts
+
+# --- Add-Ons ---
+SpeechRecognition>=3.10.0 # For Voice Commands
+python-dotenv>=1.0.0      # To hide API Keys
