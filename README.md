@@ -1,56 +1,186 @@
 # QARC: Quantitative Analysis & Risk Control 🛡️📈
-**A Hybrid Financial Intelligence System & Edge-Native Robo-Advisor**
+**An Edge-Native, Hybrid Financial Intelligence System & Robo-Advisor**
 
-![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen) ![Python](https://img.shields.io/badge/Python-3.10-blue) ![Edge AI](https://img.shields.io/badge/Accelerated-Intel_OpenVINO-00C7FD) ![Database](https://img.shields.io/badge/Database-Supabase-3ECF8E) ![API](https://img.shields.io/badge/Backend-Flask-black) ![License](https://img.shields.io/badge/License-MIT-green)
+![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen) ![Version](https://img.shields.io/badge/Version-1.0.0--beta-blue) ![Python](https://img.shields.io/badge/Python-3.10-blue) ![Edge AI](https://img.shields.io/badge/Accelerated-Intel_OpenVINO-00C7FD) ![Database](https://img.shields.io/badge/Database-Supabase-3ECF8E) ![API](https://img.shields.io/badge/Backend-Flask-black) ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
 ## 📌 Executive Summary
-**QARC** is a next-generation predictive trading engine designed to bring institutional-grade risk management to retail investors. Unlike standard algorithmic bots that blindly chase momentum, QARC prioritizes **Capital Preservation** using a multi-layered, AI-driven defense system. 
+**QARC (Quantitative Analysis & Risk Control)** is a next-generation predictive trading engine designed to democratize institutional-grade risk management. 
 
-Built for absolute data privacy and high-speed execution, QARC’s cognitive engine is optimized to run locally on Edge AI hardware (Intel Core Ultra NPUs), while persisting its strategic reasoning to a cloud-native vector database.
+While standard algorithmic trading bots are highly reactive and blindly chase momentum, QARC fundamentally prioritizes **Capital Preservation**. It achieves this through a proprietary multi-layered, AI-driven defense system that halts execution during market anomalies, liquidity traps, and manipulative pump-and-dump schemes.
 
----
-
-## 🧠 The 3-Layer Defense Architecture
-
-QARC does not rely on a single point of failure. It uses a trifecta of predictive, protective, and analytical AI models:
-
-### 1. The Profit Engine (Deep Quant Forecasting)
-* **Architecture:** Long Short-Term Memory (LSTM) Networks (PyTorch/TensorFlow).
-* **Function:** Ingests multivariate time-series data (Closing Price, RSI, MACD, Volume) with a 60-day historical lookback window to forecast short-term price action and trend reversals.
-
-### 2. The Safety Shield (Anomaly Detection)
-* **Architecture:** Unsupervised `Isolation Forest` & Scikit-Learn.
-* **Function:** Acts as an automated "Kill Switch." Analyzes market micro-structure to detect abnormal volume spikes, liquidity traps, and Pump & Dump schemes. If an anomaly is detected, trade execution is instantly halted.
-
-### 3. The Cognitive Agent (Agentic Reasoning & Memory)
-* **Architecture:** Llama-3 / Microsoft Phi-3 + FinBERT + Supabase.
-* **Function:** Translates raw quantitative output into actionable trading strategies. The Agent evaluates market sentiment and writes its daily strategic reasoning into a persistent cloud database (`ai_memories`), allowing the AI to learn from its past decisions.
+Furthermore, QARC bridges **Edge AI computing** with **Cloud-Native data persistence**. The cognitive engine is optimized to run locally on Edge AI hardware (specifically targeting NPU-equipped architectures like Intel Core Ultra), guaranteeing zero-latency inference and absolute data privacy, while persistently logging its strategic reasoning to a Supabase vector database.
 
 ---
 
-## 🏗️ System Infrastructure
+## 🧠 Core Architecture: The 3-Layer Defense System
 
-| Layer | Technology | Purpose |
+QARC operates on a strict fail-safe architecture. A trade signal must survive all three analytical layers before being presented to the user.
+
+### Layer 1: The Profit Engine (Deep Quant Forecasting)
+* **Core Technology:** Long Short-Term Memory (LSTM) Deep Neural Networks (PyTorch/TensorFlow).
+* **Mechanics:** Ingests multivariate time-series data using a sliding 60-day historical lookback window.
+* **Features Used:** Daily Closing Price, Relative Strength Index (RSI), Moving Average Convergence Divergence (MACD), and Volume.
+* **Objective:** Forecasts short-term price action and identifies highly probable trend reversals before they reflect in standard lagging indicators.
+
+### Layer 2: The Safety Shield (Anomaly & Threat Detection)
+* **Core Technology:** Unsupervised `Isolation Forest` Machine Learning (Scikit-Learn).
+* **Mechanics:** Analyzes the micro-structure of the market in real-time. 
+* **Objective:** Acts as an automated **"Kill Switch."** It maps historical volume and price action to detect statistical outliers. If the model detects abnormal volume spikes, liquidity vacuums, or artificial price manipulation (Pump & Dump), it overrides Layer 1 and halts all trade recommendations.
+
+### Layer 3: The Cognitive Agent (Agentic Reasoning & Memory)
+* **Core Technology:** Local LLM Inference (Llama-3 / Microsoft Phi-3) + FinBERT NLP + Supabase.
+* **Mechanics:** Translates the raw mathematical outputs of Layers 1 & 2 into human-readable, actionable trading strategies.
+* **Objective:** Evaluates live market sentiment via NLP and writes its daily strategic reasoning into a persistent cloud database (`ai_memories`). This gives the system **Agentic Memory**, allowing it to audit its past decisions and continuously refine its market thesis.
+
+---
+
+## 🏗️ System Infrastructure & Tech Stack
+
+| Component | Technology / Framework | Purpose |
 | :--- | :--- | :--- |
-| **Edge Hardware** | Intel Core Ultra (NPU), MSI Prestige | Zero-latency local inference, hardware-accelerated math. |
-| **Model Optimizer** | Intel OpenVINO | Compresses and accelerates PyTorch/LLM inference at the edge. |
-| **Data Persistence** | Supabase (PostgreSQL), `yfinance` | Cloud storage for historical `market_data` and Agentic state. |
-| **Backend Gateway** | Flask API, Python | REST API that connects the local AI engine to the web/frontend. |
-| **User Interface** | Streamlit, Plotly | Real-time, interactive data visualization and portfolio dashboard. |
+| **Edge Hardware Core** | Intel Core Ultra (NPU), Arc GPU | High-speed, hardware-accelerated local AI math and inference. |
+| **Model Compiler** | Intel OpenVINO | Compresses and accelerates PyTorch/LLM weights for edge deployment. |
+| **Cloud Data Persistence** | Supabase (PostgreSQL) | Remote, secure storage for `market_data` and agentic history. |
+| **Market Data Pipeline** | `yfinance`, Pandas | ETL (Extract, Transform, Load) processes for financial data. |
+| **Backend API Gateway** | Flask, Python 3.10 | REST API connecting the local AI engine to external applications. |
+| **Frontend User Interface**| Streamlit, Plotly, Lottie | Real-time, interactive data visualization and portfolio dashboard. |
 
 ---
 
 ## 🗄️ Database Schema (Supabase)
-The backend relies on a custom PostgreSQL schema to maintain state and history.
+The backend relies on a custom PostgreSQL schema deployed via Supabase to maintain state, history, and memory.
 
-**`market_data` (The Vault):**
+### 1. `market_data` (The Price Vault)
+Stores the historical and daily OHLCV and technical indicator data.
 ```sql
-id BIGINT PRIMARY KEY,
-date TIMESTAMP WITH TIME ZONE,
-close_price DECIMAL,
-rsi DECIMAL,
-macd DECIMAL,
-volume BIGINT
+CREATE TABLE IF NOT EXISTS market_data (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    date TIMESTAMP WITH TIME ZONE NOT NULL,
+    close_price DECIMAL NOT NULL,
+    rsi DECIMAL,
+    macd DECIMAL,
+    volume BIGINT,
+    ticker TEXT DEFAULT 'NSE_CPSEETF'
+);
 ```
+
+### 2. `ai_memories` (The Agent's Diary)
+Stores the LLM's generated strategies and multi-dimensional vector embeddings for future RAG (Retrieval-Augmented Generation) capabilities.
+```sql
+CREATE TABLE IF NOT EXISTS ai_memories (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    content TEXT,
+    metadata JSONB,
+    embedding VECTOR(4096)
+);
+```
+
+---
+
+## 🔌 API Documentation (Flask Backend)
+The core engine is exposed via a local Flask server to interface with the Streamlit frontend or future mobile/web applications.
+
+**Endpoint:** `GET /api/analyze`
+Triggers the full QARC end-to-end pipeline.
+
+**Execution Flow:**
+1. Fetches the latest 90 rows from `market_data` (Supabase).
+2. Executes LSTM prediction (Layer 1).
+3. Executes Isolation Forest anomaly check (Layer 2).
+4. Prompts Llama-3 with the results for strategic synthesis (Layer 3).
+5. Saves the final strategy to `ai_memories` (Supabase).
+
+**Response Body (JSON):**
+```json
+{
+  "status": "success",
+  "data": {
+      "ticker": "NSE_CPSEETF",
+      "latest_close": 140.25,
+      "lstm_target_price": 142.50,
+      "risk_level": "Low",
+      "anomaly_detected": false,
+      "strategy": "The RSI indicates oversold conditions with MACD convergence. Recommend accumulating a 5% position. Stop-loss set at 138.00."
+  },
+  "memory_saved": true
+}
+```
+
+---
+
+## 📂 Project Directory Structure
+```plaintext
+QARC-Financial-System/
+├── data/                      # Raw CSVs & Processed Datasets (Git Ignored)
+├── notebooks/                 # Jupyter Notebooks (Model Training & EDA)
+├── src/                       # Core Backend Engine
+│   ├── app.py                 # Flask API Gateway (The Server)
+│   ├── predictor.py           # Core Logic (LSTM, Anomaly, Llama-3 wrapper)
+│   └── migrate_to_supabase.py # PostgreSQL Database Migration Script
+├── web_app/                   # Frontend Application
+│   ├── main.py                # Streamlit Dashboard UI
+│   └── components/            # Reusable UI modules (Charts, Cards)
+├── assets/                    # Static Files (Lottie Animations, CSS, Logos)
+├── .env                       # Environment Variables (Keys & DB URLs)
+└── requirements.txt           # Python Package Dependencies
+```
+
+---
+
+## 🚀 Installation & Deployment Guide
+
+### Step 1: Clone & Environment Setup
+It is highly recommended to isolate dependencies using a virtual environment.
+```bash
+git clone https://github.com/yourusername/QARC-Financial-System.git
+cd QARC-Financial-System
+
+# Initialize Virtual Environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install Core Dependencies
+pip install -r requirements.txt
+```
+
+### Step 2: Cloud Database Configuration
+Create a `.env` file in the root directory. This connects the local Edge AI to the cloud persistence layer. *(Never commit this file to GitHub).*
+```env
+SUPABASE_URL="https://[YOUR_PROJECT_ID].supabase.co"
+SUPABASE_KEY="your-long-jwt-anon-key"
+DATABASE_URL="postgresql://postgres:[PASSWORD]@[HOST]:5432/postgres"
+```
+
+### Step 3: Seed the Database
+Run the automated migration script to push your local CSV training data into the Supabase `market_data` table.
+```bash
+python src/migrate_to_supabase.py
+```
+
+### Step 4: Boot the Engine
+To run the full application, you must start both the backend server and the frontend UI.
+
+**Terminal 1 (Start the API Server):**
+```bash
+python src/app.py
+# Expected Output: Running on http://127.0.0.1:5000
+```
+
+**Terminal 2 (Start the User Interface):**
+```bash
+streamlit run web_app/main.py
+# Expected Output: Network URL: http://localhost:8501
+```
+
+---
+
+## 🗺️ Product Roadmap & Future Upgrades
+- [x] **Phase 1: Local Quant Engine** - Build base LSTM models and Anomaly Detection scripts.
+- [x] **Phase 2: Cloud Hybrid Architecture** - Integrate Supabase for dynamic data fetching, bypassing static CSVs.
+- [x] **Phase 3: Agentic Memory** - Implement database writes for LLM strategic reasoning.
+- [x] **Phase 4: API & Web Integration** - Wrap core logic in a Flask REST API and build a Streamlit UI.
+- [ ] **Phase 5: Automated ETL Pipeline** - Implement CRON jobs to automatically scrape daily market closing data and push to Supabase at 4:00 PM EST.
+- [ ] **Phase 6: Hardware Acceleration** - Deep integration with Intel OpenVINO for sub-second NPU inference and optimized battery consumption on Edge devices.
+- [ ] **Phase 7: Voice-to-Trade** - Implement local speech recognition models for hands-free portfolio queries.
