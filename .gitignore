@@ -1,0 +1,20 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Large ML model files (too big for GitHub)
+src/My_Stock_AI_Model/
+src/qarc_fast_merged/
+src/qarc_lstm.h5
+*.safetensors
+*.bin
+
+# Temp files
+pip_log.txt
+error.txt
+err.txt
+tb.txt
+sdk_src.txt
