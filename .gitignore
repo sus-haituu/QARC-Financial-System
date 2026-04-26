@@ -8,8 +8,6 @@ __pycache__/
 # Large ML model files (too big for GitHub)
 *.safetensors
 *.bin
-*.h5
-src/qarc_lstm.h5
 
 # Temp files
 pip_log.txt

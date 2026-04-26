@@ -70,8 +70,33 @@ def save_prediction_memory(analysis_text: str):
     print("Saving AI analysis to Supabase memories...")
     return supabase_manager.save_ai_memory(analysis_text)
 
-
-# Example usage for testing
-if __name__ == "__main__":
+def run_prediction():
+    """
+    Main prediction pipeline:
+    1. Fetch Supabase market data.
+    2. Run the LSTM model.
+    3. Run Llama-3 strategy assessment.
+    4. Save the strategy to the ai_memories table.
+    """
+    print("Running full prediction pipeline...")
+    # 1. Fetch data
     market_data = get_market_analysis()
-    print(f"Fetched {len(market_data)} market data rows.")
+    
+    # 2. Run LSTM (Mocked for now until model inference is merged)
+    lstm_projected_price = 155.42 
+    
+    # 3. Compile Strategy (Mocked Llama-3 output)
+    strategy_report = f"Based on the last {len(market_data)} days of data and an LSTM projection of ${lstm_projected_price}, the QARC AI recommends a HOLD position."
+    
+    # 4. Save to memories
+    save_prediction_memory(strategy_report)
+    
+    return {
+        "lstm_prediction": lstm_projected_price,
+        "llama_strategy": strategy_report,
+        "data_points_analyzed": len(market_data)
+    }
+
+if __name__ == "__main__":
+    result = run_prediction()
+    print("Pipeline result:", result)
