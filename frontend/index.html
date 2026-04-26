@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QARC Terminal V4.0</title>
+    <!-- Premium Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- TradingView Lightweight Charts -->
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>QARC</h2>
+            </div>
+            <div class="sidebar-user">
+                <p class="subtitle">INSTITUTIONAL</p>
+                <p class="small-text">TERMINAL V4.0</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <i class="ph ph-brain"></i>
+                    <span>MASTER BRAIN</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>QUANT LOG</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-broadcast"></i>
+                    <span>SIGNAL FEED</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-vault"></i>
+                    <span>STRATEGY VAULT</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-nav">
+                <div class="nav-links">
+                    <a href="#" class="active">TERMINAL</a>
+                    <a href="#">ANALYTICS</a>
+                    <a href="#">HISTORY</a>
+                    <a href="#">SYSTEM STATUS</a>
+                </div>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Search Markets...">
+                    </div>
+                    <button class="icon-btn"><i class="ph ph-bell"></i></button>
+                    <button class="icon-btn"><i class="ph ph-user-circle"></i></button>
+                </div>
+            </header>
+
+            <!-- Workspace -->
+            <div class="workspace">
+                <div class="dashboard-core">
+                    <!-- Metrics Row -->
+                    <div class="metrics-row">
+                        <div class="metric-card">
+                            <span class="label">LIVE PRICE</span>
+                            <div class="value-row">
+                                <h3>$64,281.40</h3>
+                                <span class="badge positive">+2.4%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card highlight-glow" id="lstm-card">
+                            <span class="label">LSTM PREDICTION</span>
+                            <div class="value-row">
+                                <h3 id="lstm-value">$68,140.00</h3>
+                                <i class="ph ph-trend-up"></i>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="label">RSI (14)</span>
+                            <div class="value-row">
+                                <h3>58.4</h3>
+                                <span class="badge neutral">NEUTRAL</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="label">MACD</span>
+                            <div class="value-row">
+                                <h3>12.8</h3>
+                                <span class="badge bullish">BULLISH CROSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div class="chart-panel">
+                        <div class="chart-header">
+                            <div class="asset-info">
+                                <span class="label">ASSET</span>
+                                <h4>BTC/USDT</h4>
+                            </div>
+                            <div class="asset-info">
+                                <span class="label">INTERVAL</span>
+                                <h4>4H</h4>
+                            </div>
+                        </div>
+                        <div id="tvchart" class="chart-body"></div>
+                        <div class="chart-controls">
+                            <button class="square-btn"><i class="ph ph-magnifying-glass-plus"></i></button>
+                            <button class="square-btn"><i class="ph ph-magnifying-glass-minus"></i></button>
+                            <button class="square-btn primary-btn"><i class="ph ph-arrows-out-line-horizontal"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Action Console -->
+                    <div class="action-console">
+                        <div class="status-indicator">
+                            <div class="pulse-dot"></div>
+                            <span>NEURAL AGENT CORE READY</span>
+                        </div>
+                        <div class="action-row">
+                            <div class="voice-input">
+                                <input type="text" placeholder="Analyze sentiment divergence vs liquidity outflow on BTC 4H..." readonly>
+                                <i class="ph ph-microphone"></i>
+                            </div>
+                            <button id="deep-analysis-btn" class="glow-button">
+                                <div class="btn-content">
+                                    <span class="btn-title">EXECUTE DEEP ANALYSIS</span>
+                                    <span class="btn-subtitle">Request ID: QARC-8892-X</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar (Analyst Sentinel) -->
+                <aside class="sentinel-panel">
+                    <div class="sentinel-header">
+                        <div class="agent-avatar">
+                            <i class="ph ph-robot"></i>
+                        </div>
+                        <div class="agent-info">
+                            <h4>Analyst Sentinel</h4>
+                            <span class="status-text">ACTIVE INTELLIGENCE</span>
+                        </div>
+                        <button class="icon-btn"><i class="ph ph-gear"></i></button>
+                    </div>
+
+                    <div class="sentinel-feed" id="feed-container">
+                        <!-- Default Initial Entries -->
+                        <div class="feed-entry">
+                            <div class="entry-meta">SENTINEL • 09:41 AM</div>
+                            <p>Observing a sharp decrease in derivative volume alongside a neutral funding rate. This suggests a consolidation phase before the predicted $68k push.</p>
+                        </div>
+                        <div class="feed-entry signal-alert">
+                            <div class="signal-header">
+                                <i class="ph ph-sparkle"></i> TRADE SIGNAL ALERT
+                            </div>
+                            <p>Accumulation zone identified between $63,800 and $64,100. RSI cooling confirms entry stability.</p>
+                        </div>
+                        <div class="feed-entry dim-entry">
+                            <div class="entry-meta" style="color:var(--text-dim)">INSTITUTIONAL FLOW</div>
+                            <p style="color:var(--text-dim)">Minor whale sell pressure detected from Binance cold wallet 0x3f... negligible impact on overall trend.</p>
+                        </div>
+                    </div>
+
+                    <div class="sentinel-input">
+                        <input type="text" placeholder="Ask Sentinel anything...">
+                        <button class="send-btn"><i class="ph ph-paper-plane-right"></i></button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
